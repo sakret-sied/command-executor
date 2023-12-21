@@ -1,6 +1,6 @@
-import IStreamLogger from '../../core/handlers/i-stream-logger.js';
+import StreamLoggerInterface from '../../core/handlers/stream-logger-interface.js';
 
-export default class ConsoleLogger implements IStreamLogger {
+export default class ConsoleLogger implements StreamLoggerInterface {
   private static instance: ConsoleLogger;
 
   private constructor() {}

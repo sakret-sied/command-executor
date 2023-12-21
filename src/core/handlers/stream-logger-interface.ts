@@ -1,4 +1,4 @@
-export default interface IStreamLogger {
+export default interface StreamLoggerInterface {
   log(...args: any[]): void;
 
   error(...args: any[]): void;

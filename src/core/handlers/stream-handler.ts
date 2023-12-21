@@ -1,8 +1,8 @@
 import { ChildProcessWithoutNullStreams } from 'child_process';
-import IStreamLogger from './i-stream-logger.js';
+import StreamLoggerInterface from './stream-logger-interface.js';
 
 export default class StreamHandler {
-  constructor(private logger: IStreamLogger) {}
+  constructor(private logger: StreamLoggerInterface) {}
 
   public processOutput(stream: ChildProcessWithoutNullStreams) {
     stream.stdout.on('data', (data: any) => {
