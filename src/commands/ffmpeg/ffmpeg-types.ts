@@ -1,6 +1,7 @@
-export type FfmpegBuildParams = {
-  path?: string;
-  name?: string;
-  width?: number;
-  height?: number;
-};
+export const enum FfmpegKeys {
+  Codec = '-c:v',
+  Path = '-i',
+  Size = '-s',
+}
+
+export interface FfmpegParams extends Map<FfmpegKeys, string> {}
