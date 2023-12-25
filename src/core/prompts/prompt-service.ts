@@ -4,7 +4,7 @@ import { PromptType } from './prompt-type.js';
 export default class PromptService {
   public async input<T>(message: string, type: PromptType) {
     const { result } = await inquirer.prompt<{ result: T }>([
-      { type: 'input', name: 'result', message },
+      { type, name: 'result', message },
     ]);
     return result;
   }

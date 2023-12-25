@@ -3,5 +3,5 @@ export default interface StreamLoggerInterface {
 
   error(...args: any[]): void;
 
-  end(): void;
+  close(): void;
 }

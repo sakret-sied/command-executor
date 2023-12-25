@@ -20,7 +20,7 @@ export default class ConsoleLogger implements StreamLoggerInterface {
     console.error(...args);
   }
 
-  public end(): void {
+  public close(): void {
     console.log('End');
   }
 }

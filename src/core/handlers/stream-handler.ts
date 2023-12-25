@@ -6,15 +6,19 @@ export default class StreamHandler {
 
   public processOutput(stream: ChildProcessWithoutNullStreams) {
     stream.stdout.on('data', (data: any) => {
-      this.logger.log(data);
+      this.logger.log(this.bufferToText(data));
     });
 
     stream.stderr.on('data', (data: any) => {
-      this.logger.error(data);
+      this.logger.error(this.bufferToText(data));
     });
 
-    stream.on('close', (data: any) => {
-      this.logger.end();
+    stream.on('close', () => {
+      this.logger.close();
     });
+  }
+
+  private bufferToText(data: any): string {
+    return Buffer.from(data, 'utf-8').toString();
   }
 }

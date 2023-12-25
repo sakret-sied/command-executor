@@ -1,16 +1,13 @@
-import { CommandType } from '../../core/executor/command.types.js';
-import { FfmpegKeys, FfmpegParams } from './ffmpeg-types.js';
+import { FfmpegKeys, FfmpegMap } from './ffmpeg-types.js';
 
 export default class FfmpegBuilder {
-  public static COMMAND_NAME = 'ffmpeg';
-
   public static DEFAULT_CODEC = 'libx264';
-  public static DEFAULT_PATH = './';
-  public static DEFAULT_NAME = 'default-name';
-  public static DEFAULT_WIDTH = 128;
-  public static DEFAULT_HEIGHT = 96;
+  public static DEFAULT_PATH = 'D:/Projects/command-executor/temp.mp4';
+  public static DEFAULT_NAME = 'temp2.mp4';
+  public static DEFAULT_WIDTH = 640;
+  public static DEFAULT_HEIGHT = 480;
 
-  private args: FfmpegParams = new Map();
+  private args: FfmpegMap = new Map();
 
   public setCodec(codec: string = FfmpegBuilder.DEFAULT_CODEC): this {
     this.args.set(FfmpegKeys.Codec, codec);
@@ -30,11 +27,10 @@ export default class FfmpegBuilder {
     return this;
   }
 
-  public build(name: string = FfmpegBuilder.DEFAULT_NAME): CommandType {
-    const command = FfmpegBuilder.COMMAND_NAME;
+  public build(name: string = FfmpegBuilder.DEFAULT_NAME): string[] {
     const args: string[] = [];
     this.args.forEach((value, key) => args.push(key, value));
     args.push(name);
-    return { command, args };
+    return args;
   }
 }
